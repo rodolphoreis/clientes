@@ -11,7 +11,7 @@ app.use(cors());
 app.get("/client", async (_, response) => {
   try {
     const read = await prismaClient.cliente.findMany();
-    return response.status(200).json({ message: read, error: false });
+    return response.status(200).json({ data: read, error: false });
   } catch (error) {
     return response.status(500).json({ message: error, error: true });
   }
@@ -30,6 +30,11 @@ app.post("/client", async (request, response) => {
         phone,
       },
     });
+    return response.status(204).json({ data: create, error: false });
+  } catch (error) {
+    return response.status(500).json({ message: error, error: true });
+  }
+});
 
 app.put("/client/:id", async (request, response) => {
   const { name, surname, company, status, phone } = request.body;
