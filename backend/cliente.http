@@ -1,0 +1,15 @@
+###
+GET http://localhost:3000/client
+
+###
+POST http://localhost:3000/client
+Content-Type: application/json
+
+{
+    "name":"Fernanda",
+    "surname":"Reis",
+    "company": "100%-Dev",
+    "status": true,
+    "phone": 958545482
+}
+
