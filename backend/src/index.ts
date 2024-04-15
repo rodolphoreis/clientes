@@ -17,6 +17,25 @@ app.get("/client", async (_, response) => {
   }
 });
 
+app.post("/client", async (request, response) => {
+  const { name, surname, company, status, phone } = request.body;
+
+  try {
+    const create = await prismaClient.cliente.create({
+      data: {
+        name,
+        surname,
+        company,
+        status,
+        phone,
+      },
+    });
+    return response.status(204).json({ message: create, error: false });
+  } catch (error) {
+    return response.status(500).json({ message: error, error: true });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Running server port: ${PORT}`);
 });
