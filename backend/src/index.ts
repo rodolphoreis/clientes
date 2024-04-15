@@ -30,7 +30,32 @@ app.post("/client", async (request, response) => {
         phone,
       },
     });
-    return response.status(204).json({ message: create, error: false });
+
+app.put("/client/:id", async (request, response) => {
+  const { name, surname, company, status, phone } = request.body;
+  const { id } = request.params;
+
+  if (!id) {
+    return "Client not found!";
+  }
+
+  try {
+    const update = await prismaClient.cliente.update({
+      where: { id },
+      data: {
+        name,
+        surname,
+        company,
+        status,
+        phone,
+      },
+    });
+    return response.status(200).json({ data: update, error: false });
+  } catch (error) {
+    return response.status(500).json({ message: error, error: true });
+  }
+});
+
   } catch (error) {
     return response.status(500).json({ message: error, error: true });
   }
