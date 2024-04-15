@@ -56,6 +56,14 @@ app.put("/client/:id", async (request, response) => {
   }
 });
 
+app.delete("/client/:id", async (request, response) => {
+  const { id } = request.params;
+
+  try {
+    const remove = await prismaClient.cliente.delete({
+      where: { id },
+    });
+    return response.status(200).json({ error: false });
   } catch (error) {
     return response.status(500).json({ message: error, error: true });
   }
