@@ -13,3 +13,15 @@ Content-Type: application/json
     "phone": 958545482
 }
 
+###
+PUT http://localhost:3000/client/513a581d-05aa-4d43-bb94-f2253221d5b0
+Content-Type: application/json
+
+{
+    "name":"Rodolpho",
+    "status": false
+}
+
+###
+DELETE  http://localhost:3000/client/5f1f21aa-1b7e-4ef9-ae2e-c00f4bd66e82
+
