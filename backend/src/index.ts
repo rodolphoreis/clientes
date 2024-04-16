@@ -8,6 +8,10 @@ const PORT = 3000;
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (request, response) => {
+  response.send("Hello from your backend server!");
+});
+
 app.get("/client", async (_, response) => {
   try {
     const read = await prismaClient.cliente.findMany();
