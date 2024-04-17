@@ -6,11 +6,11 @@ POST http://localhost:3000/client
 Content-Type: application/json
 
 {
-    "name":"Fernanda",
-    "surname":"Reis",
-    "company": "100%-Dev",
+    "name":"Joaoo",
+    "surname":"ALves",
+    "company": "It",
     "status": true,
-    "phone": 958545482
+    "phone": 922356482
 }
 
 ###
@@ -18,10 +18,10 @@ PUT http://localhost:3000/client/513a581d-05aa-4d43-bb94-f2253221d5b0
 Content-Type: application/json
 
 {
-    "name":"Rodolpho",
+    "name":"Robertoo",
     "status": false
 }
 
 ###
-DELETE  http://localhost:3000/client/5f1f21aa-1b7e-4ef9-ae2e-c00f4bd66e82
+DELETE  http://localhost:3000/client/d08867e1-c77f-44dd-a46f-17bceeb2d72a
 
