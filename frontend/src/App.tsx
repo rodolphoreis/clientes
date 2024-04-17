@@ -51,11 +51,14 @@ function App() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/client",
-        formData
-      );
       console.log(formData);
+      const response = await axios.post("http://localhost:3000/client", {
+        name: formData.name,
+        surname: formData.surname,
+        company: formData.company,
+        status: Boolean(formData.status),
+        phone: Number(formData.phone),
+      });
       console.log(response);
       setClients([...clients, response.data.data]);
       setFormData({

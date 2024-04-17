@@ -34,7 +34,7 @@ app.post("/client", async (request, response) => {
         phone,
       },
     });
-    return response.status(204).json({ data: create, error: false });
+    return response.status(201).json({ data: create, error: false });
   } catch (error) {
     return response.status(500).json({ message: error, error: true });
   }
