@@ -12,6 +12,8 @@ import {
   TextField,
   Select,
   MenuItem,
+  FormControl,
+  InputLabel,
 } from "@material-ui/core";
 import "./App.css";
 
@@ -43,16 +45,26 @@ function App() {
       });
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<{ name?: string; value: unknown }>
+  ) => {
+    let value: string | number | boolean = e.target.value as
+      | string
+      | number
+      | boolean;
+    if (typeof value === "boolean") {
+      value = value ? "1" : "2";
+    }
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name as string]: value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      console.log(formData);
       const response = await axios.post("http://localhost:3000/client", {
         name: formData.name,
         surname: formData.surname,
@@ -106,15 +118,18 @@ function App() {
           onChange={handleChange}
         />
 
-        <Select
-          label="Status"
-          name="status"
-          value={formData.status}
-          onChange={handleChange}
-        >
-          <MenuItem value={true}>Active</MenuItem>
-          <MenuItem value={false}>Inactive</MenuItem>
-        </Select>
+        <FormControl>
+          <InputLabel id="status-label">Status</InputLabel>
+          <Select
+            labelId="status-label"
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+          >
+            <MenuItem value="1">Active</MenuItem>
+            <MenuItem value="0">Inactive</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           label="Phone"
           name="phone"
