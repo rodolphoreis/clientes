@@ -10,6 +10,8 @@ import {
   Paper,
   Button,
   TextField,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
 import "./App.css";
 
@@ -101,12 +103,16 @@ function App() {
           value={formData.company}
           onChange={handleChange}
         />
-        <TextField
+
+        <Select
           label="Status"
           name="status"
           value={formData.status}
           onChange={handleChange}
-        />
+        >
+          <MenuItem value={true}>Active</MenuItem>
+          <MenuItem value={false}>Inactive</MenuItem>
+        </Select>
         <TextField
           label="Phone"
           name="phone"
