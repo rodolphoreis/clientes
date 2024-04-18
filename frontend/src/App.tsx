@@ -140,6 +140,7 @@ function App() {
           Add Client
         </Button>
       </form>
+
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
