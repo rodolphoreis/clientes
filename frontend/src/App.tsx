@@ -107,6 +107,15 @@ function App() {
       console.log("error", error);
     }
   };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredClients = clients.filter((client) =>
+    client.company.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
