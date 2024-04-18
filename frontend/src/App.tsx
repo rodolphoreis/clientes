@@ -123,7 +123,7 @@ function App() {
           <Select
             labelId="status-label"
             name="status"
-            value={formData.status}
+            value={formData.status ? "1" : "0"}
             onChange={handleChange}
           >
             <MenuItem value="1">Active</MenuItem>
