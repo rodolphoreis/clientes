@@ -96,6 +96,17 @@ function App() {
     }
   };
 
+  const handleEdit = async (id: string, updatedClient: Client) => {
+    try {
+      await axios.put(`http://localhost:3000/client/${id}`, updatedClient);
+      const updatedClients = clients.map((client) =>
+        client.id === id ? updatedClient : client
+      );
+      setClients(updatedClients);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
